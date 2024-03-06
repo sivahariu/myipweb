@@ -3,16 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get Public IP</title>
+    <title>Deel - Home Task...!</title>
 </head>
 <body>
-    <p>Your public IP address is: <span id="public-ip"></span></p>
+    <p><b>Your public IP address is: <span id="public-ip"></span></b></p>
+    <p><b>Reversed public IP address is: <span id='reverse-public-ip'></span></b></p>
 
     <script>
         fetch('/get_public_ip')
             .then(response => response.json())
             .then(data => {
                 document.getElementById('public-ip').innerText = data.ip;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+        fetch('/reversed_public_ip') // corrected endpoint name
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('reverse-public-ip').innerText = data.rIPv4; // corrected field name
             })
             .catch(error => {
                 console.error('Error:', error);
