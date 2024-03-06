@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Public IP</title>
+</head>
+<body>
+    <p>Your public IP address is: <span id="public-ip"></span></p>
+
+    <script>
+        fetch('/get_public_ip')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('public-ip').innerText = data.ip;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    </script>
+</body>
+</html>
